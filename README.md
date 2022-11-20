@@ -18,6 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
    ```
       yarn add @mui/material @emotion/react @emotion/styled
       yarn add @mui/icons-material
+      yarn add js-cookie
    ```
 
 ## Notas
