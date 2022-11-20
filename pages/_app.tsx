@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useState, useEffect } from 'react';
 import '../styles/globals.css'
 
+<<<<<<< HEAD
 // NOTE - CssBaseline de material es diferente del de next que resetea los estilos
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
@@ -9,6 +10,10 @@ import { customTheme, darkTheme, lightTheme } from '../themes'
 import Cookies from 'js-cookie'
 
 // NOTE - esta forma de usar las cookies para los temas en lugar de getInitialProps es para mantener las caracteristicas de una pagina estatica
+=======
+import '../styles/globals.css'
+
+>>>>>>> 8f46a6973bd1f1b3cb1ca6ec01417af78227cd1a
 
 export default function App({ Component, pageProps }: AppProps) {
 
