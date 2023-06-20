@@ -1,56 +1,50 @@
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
 import { useState, useEffect } from 'react';
-import '../styles/globals.css'
+import '../styles/globals.css';
 
-<<<<<<< HEAD
-// NOTE - CssBaseline de material es diferente del de next que resetea los estilos
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
-import { customTheme, darkTheme, lightTheme } from '../themes'
-import Cookies from 'js-cookie'
+import { customTheme, darkTheme, lightTheme } from '../themes';
+import Cookies from 'js-cookie';
+import { AppContextType } from 'next/dist/shared/lib/utils';
 
 // NOTE - esta forma de usar las cookies para los temas en lugar de getInitialProps es para mantener las caracteristicas de una pagina estatica
-=======
-import '../styles/globals.css'
-
->>>>>>> 8f46a6973bd1f1b3cb1ca6ec01417af78227cd1a
 
 export default function App({ Component, pageProps }: AppProps) {
 
-   const [currentTheme, setCurrentTheme] = useState(lightTheme)
+  const [currentTheme, setCurrentTheme] = useState(lightTheme);
 
-   useEffect(() => {
+  useEffect(() => {
 
-      const cookieTheme = Cookies.get('theme') || 'light'
+    const getCookieTheme = Cookies.get('theme') || 'light';
 
-      const selectedTheme = cookieTheme === 'light'
-         ? lightTheme
-         : (cookieTheme === 'dark')
-            ? darkTheme
-            : customTheme
+    const selectedTheme = getCookieTheme === 'light'
+      ? lightTheme
+      : (getCookieTheme === 'dark')
+        ? darkTheme
+        : customTheme;
 
-      setCurrentTheme(selectedTheme);
-   }, [])
+    setCurrentTheme(selectedTheme);
+  }, []);
 
-   return (
-      <ThemeProvider theme={currentTheme} >
-         <CssBaseline />
-         <Component {...pageProps} />
-      </ThemeProvider>
-   )
+  return (
+    <ThemeProvider theme={currentTheme} >
+      <CssBaseline />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
-// NOTE - Comentado porque no es util trabajar con getInitialProps clase 169
+// REVIEW - No es util trabajar con getInitialProps porque se pierde todos las funciones static
+// App.getInitialProps = async (appContext: AppContextType) => {
 
-// App.getInitialProps = async (appContext: AppContext) => {
+//   const { theme } = appContext.ctx.req
+//     ? (appContext.ctx.req as any).cookies
+//     : { theme: 'light' };
 
-//    const cookies = appContext.ctx.req
-//       ? (appContext.ctx.req as any).cookies
-//       : { theme: 'light' }
+//   const validThemes = ['light', 'dark', 'custom'];
 
-//    console.log('getInitialProps app', cookies);
-
-//    return {
-
-//    }
-// }
+//   return {
+//     theme: validThemes.includes(theme) ? theme : 'dark',
+//   };
+// };
