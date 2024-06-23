@@ -5,7 +5,7 @@ type Data = {
   name: string;
 };
 
-// NOTE - usado como demo para enviar las cookies con una peticion desde el front (them-changer)
+// NOTE - Demo para enviar las cookies al cliente en /theme-changer
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 

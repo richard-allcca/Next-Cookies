@@ -16,18 +16,23 @@ const ThemeChanger: FC<Props> = ({ theme }) => {
 
   const [currentTheme, setCurrentTheme] = useState(theme);
 
+  // Cambio de tema segun cookie
   const onThemeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedTheme = event.target.value;
+
     setCurrentTheme(selectedTheme);
+
     Cookies.set('theme', selectedTheme);
   };
 
+  // Evento para obtener cookie del servidor
   const onClick = async () => {
     const { data } = await axios.get('/api/hello');
     console.log({ data });
   };
 
   useEffect(() => {
+    // lee la cookie del navegdor
     console.log('cookies', Cookies.get('theme'));
   }, []);
 
